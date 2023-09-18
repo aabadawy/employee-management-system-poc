@@ -9,16 +9,17 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Http\Resources\EmployeeResource;
 use App\Models\Employee;
+use App\Queries\Employee\IndexEmployeeQuery;
 
 class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(IndexEmployeeQuery $query)
     {
         return EmployeeResource::collection(
-            Employee::query()->paginate(request()->integer('per_page',25))
+            $query->paginate(request()->integer('per_page',25))
         );
     }
 
