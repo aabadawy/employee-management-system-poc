@@ -19,12 +19,12 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'  => $this->faker->name(),
+            'name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'mobile_number' => (int) $this->faker->e164PhoneNumber(),
-            'mobile_country_code' => $this->faker->randomElement([SupportedCountryCode::Egypt,SupportedCountryCode::Usa]),
-            'net_salary'    => $this->faker->randomFloat(2,1000,5000),
-            'salary_currency'   => $this->faker->randomElement([SalaryCurrency::Usd]),
+            'mobile_country_code' => $this->faker->randomElement([SupportedCountryCode::Egypt, SupportedCountryCode::Usa]),
+            'net_salary' => $this->faker->randomFloat(2, 1000, 5000),
+            'salary_currency' => $this->faker->randomElement([SalaryCurrency::Usd]),
         ];
     }
 }

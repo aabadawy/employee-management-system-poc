@@ -16,7 +16,7 @@ it('should have execute method', function () {
     expect(CreateEmployeeCommand::class)->toHaveMethod('execute');
 });
 
-it('should return created employee',function () {
+it('should return created employee', function () {
     $createEmployeeCommand = app(CreateEmployeeCommand::class);
 
     Job::factory()->createOne();
@@ -25,14 +25,14 @@ it('should return created employee',function () {
 
     $result = $createEmployeeCommand->execute(
         EmployeeData::from([
-            'name'  => 'foo ba',
+            'name' => 'foo ba',
             'email' => 'foo@example.com',
-            'mobile_country_code'    => SupportedCountryCode::Egypt,
+            'mobile_country_code' => SupportedCountryCode::Egypt,
             'mobile_number' => 1114470249,
-            'net_salary'    => 1200,
-            'salary_currency'    => SalaryCurrency::Usd,
-            'job_id'    => Job::query()->first()->getKey(),
-            'department_id'    => Department::query()->first()->getKey(),
+            'net_salary' => 1200,
+            'salary_currency' => SalaryCurrency::Usd,
+            'job_id' => Job::query()->first()->getKey(),
+            'department_id' => Department::query()->first()->getKey(),
         ])
     );
 

@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
 
-            $table->enum('mobile_country_code',['+20','+1']);
+            $table->enum('mobile_country_code', ['+20', '+1']);
             $table->bigInteger('mobile_number');
 
             $table->enum('salary_currency', [
                 'egp',
-                'usd'
+                'usd',
             ])->comment('supported currencies in the system');
             $table->float('net_salary');
 

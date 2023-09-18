@@ -26,7 +26,7 @@ class Employee extends Model
 
     public function jobTitle(): BelongsTo
     {
-        return $this->belongsTo(Job::class,'job_id');
+        return $this->belongsTo(Job::class, 'job_id');
     }
 
     public function job(): BelongsTo
@@ -36,17 +36,17 @@ class Employee extends Model
 
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class,'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
-    public function scopeSearch(Builder $query,string $segment):Builder
+    public function scopeSearch(Builder $query, string $segment): Builder
     {
         $segment = strtolower("%$segment%");
 
         return $query
-            ->where(DB::raw('LOWER(name)'),'LIKE',$segment)
+            ->where(DB::raw('LOWER(name)'), 'LIKE', $segment)
             ->orWhereHas('job',
-                fn(Builder $q) => $q->where(DB::raw('LOWER(title)'),'LIKE',$segment)
+                fn (Builder $q) => $q->where(DB::raw('LOWER(title)'), 'LIKE', $segment)
             );
     }
 }

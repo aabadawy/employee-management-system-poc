@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +16,7 @@ class DepartmentSeeder extends Seeder
 
         DB::table('departments')->insert([
             ['name' => 'people & culture'],
-            ['name' => 'software & development']
+            ['name' => 'software & development'],
         ]);
     }
 }

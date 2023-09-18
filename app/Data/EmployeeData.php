@@ -17,5 +17,6 @@ class EmployeeData extends Data
         public int $mobile_number,
         public SalaryCurrency $salary_currency,
         public float $net_salary
-    ) {}
+    ) {
+    }
 }

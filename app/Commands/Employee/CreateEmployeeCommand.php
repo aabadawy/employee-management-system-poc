@@ -7,7 +7,7 @@ use App\Models\Employee;
 
 class CreateEmployeeCommand
 {
-    public function execute(EmployeeData $employeeData):Employee
+    public function execute(EmployeeData $employeeData): Employee
     {
         $employee = new Employee($employeeData->toArray());
 

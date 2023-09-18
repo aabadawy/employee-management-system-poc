@@ -2,7 +2,7 @@
 
 namespace App\Enums\Employee;
 
-enum SalaryCurrency:string
+enum SalaryCurrency: string
 {
     case Egp = 'egp';
 

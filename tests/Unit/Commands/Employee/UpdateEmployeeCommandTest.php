@@ -11,53 +11,53 @@ use Tests\TestCase;
 uses(TestCase::class, RefreshDatabase::class);
 
 describe('updateEmployeeCommand', function () {
-   it('should have execute method' ,function () {
-     expect(UpdateEmployeeCommand::class)->toHaveMethod('execute');
-   });
+    it('should have execute method', function () {
+        expect(UpdateEmployeeCommand::class)->toHaveMethod('execute');
+    });
 
-   it('should return employee instance after updated it', function () {
-       $employeeBeforeUpdate = Employee::factory()->for(
-           Job::factory()->createOne()
-       )->for(
-           Department::factory()->createOne()
-       )->createOne([
-           'name'  => 'foo ba',
-           'net_salary' => 100,
-           'salary_currency' => 'usd'
-       ]);
+    it('should return employee instance after updated it', function () {
+        $employeeBeforeUpdate = Employee::factory()->for(
+            Job::factory()->createOne()
+        )->for(
+            Department::factory()->createOne()
+        )->createOne([
+            'name' => 'foo ba',
+            'net_salary' => 100,
+            'salary_currency' => 'usd',
+        ]);
 
-       $updateEmployeeCommand = app(UpdateEmployeeCommand::class);
+        $updateEmployeeCommand = app(UpdateEmployeeCommand::class);
 
-       $toBeUpdatedFields = [
-           'name'   => 'updated name'
-       ];
+        $toBeUpdatedFields = [
+            'name' => 'updated name',
+        ];
 
-       $updatedEmployee = $updateEmployeeCommand->execute($employeeBeforeUpdate, EmployeeData::from(
-           array_merge($employeeBeforeUpdate->toArray(),$toBeUpdatedFields)
-       ));
+        $updatedEmployee = $updateEmployeeCommand->execute($employeeBeforeUpdate, EmployeeData::from(
+            array_merge($employeeBeforeUpdate->toArray(), $toBeUpdatedFields)
+        ));
 
-      expect($updatedEmployee)->toBeInstanceOf(Employee::class);
+        expect($updatedEmployee)->toBeInstanceOf(Employee::class);
 
-      expect($updatedEmployee->name)->toEqual('updated name');
-   });
+        expect($updatedEmployee->name)->toEqual('updated name');
+    });
 
-   it('should load employee jobTitle relation after update' ,function () {
-       $employeeBeforeUpdate = Employee::factory()->for(
-           Job::factory()->createOne()
-       )->for(
-           Department::factory()->createOne()
-       )->createOne([
-           'name'  => 'foo ba',
-           'net_salary' => 100,
-           'salary_currency' => 'usd'
-       ]);
+    it('should load employee jobTitle relation after update', function () {
+        $employeeBeforeUpdate = Employee::factory()->for(
+            Job::factory()->createOne()
+        )->for(
+            Department::factory()->createOne()
+        )->createOne([
+            'name' => 'foo ba',
+            'net_salary' => 100,
+            'salary_currency' => 'usd',
+        ]);
 
-       $updateEmployeeCommand = app(UpdateEmployeeCommand::class);
+        $updateEmployeeCommand = app(UpdateEmployeeCommand::class);
 
-       $updatedEmployee = $updateEmployeeCommand->execute($employeeBeforeUpdate, EmployeeData::from(
-           $employeeBeforeUpdate
-       ));
+        $updatedEmployee = $updateEmployeeCommand->execute($employeeBeforeUpdate, EmployeeData::from(
+            $employeeBeforeUpdate
+        ));
 
-       expect($updatedEmployee->relationLoaded('jobTitle'))->toBeTrue();
-   });
+        expect($updatedEmployee->relationLoaded('jobTitle'))->toBeTrue();
+    });
 });

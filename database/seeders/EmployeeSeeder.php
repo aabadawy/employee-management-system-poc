@@ -17,7 +17,7 @@ class EmployeeSeeder extends Seeder
             ->for(
                 Job::query()
                     ->firstOr(
-                        fn() => Job::factory()->createOne(['title' => 'software engineer']
+                        fn () => Job::factory()->createOne(['title' => 'software engineer']
                         )
                     )
             )->create();
@@ -25,9 +25,9 @@ class EmployeeSeeder extends Seeder
         Employee::factory(100)
             ->for(
                 Job::query()
-                ->firstOr(
-                    fn() => Job::factory()->createOne(['title' => 'HR'])
-                )
+                    ->firstOr(
+                        fn () => Job::factory()->createOne(['title' => 'HR'])
+                    )
             )->create();
     }
 }
