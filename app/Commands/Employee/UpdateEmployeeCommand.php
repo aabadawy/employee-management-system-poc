@@ -14,7 +14,8 @@ class UpdateEmployeeCommand
         );
 
         return $employee->refresh()->load([
-            'jobTitle',
+            'job',
+            'department',
         ]);
     }
 }

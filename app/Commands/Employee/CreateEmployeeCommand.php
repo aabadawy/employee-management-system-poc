@@ -13,6 +13,9 @@ class CreateEmployeeCommand
 
         $employee->save();
 
-        return $employee;
+        return $employee->refresh()->load([
+            'job',
+            'department',
+        ]);
     }
 }

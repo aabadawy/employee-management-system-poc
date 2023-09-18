@@ -42,6 +42,8 @@ describe('createEmployee', function () use ($request_body) {
                     'data.mobile_number',
                     'data.salary_currency',
                     'data.net_salary',
+                    'data.job.title',
+                    'data.department.name',
                 ])
             );
 

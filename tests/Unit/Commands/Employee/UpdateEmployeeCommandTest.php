@@ -41,7 +41,7 @@ describe('updateEmployeeCommand', function () {
         expect($updatedEmployee->name)->toEqual('updated name');
     });
 
-    it('should load employee jobTitle relation after update', function () {
+    it('should load employee job and department relation after update', function () {
         $employeeBeforeUpdate = Employee::factory()->for(
             Job::factory()->createOne()
         )->for(
@@ -58,6 +58,8 @@ describe('updateEmployeeCommand', function () {
             $employeeBeforeUpdate
         ));
 
-        expect($updatedEmployee->relationLoaded('jobTitle'))->toBeTrue();
+        expect($updatedEmployee->relationLoaded('job'))->toBeTrue();
+
+        expect($updatedEmployee->relationLoaded('department'))->toBeTrue();
     });
 });

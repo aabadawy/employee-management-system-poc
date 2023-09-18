@@ -26,7 +26,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreEmployeeRequest $request, CreateEmployeeCommand $createEmployeeCommand)
+    public function store(StoreEmployeeRequest $request, CreateEmployeeCommand $createEmployeeCommand): EmployeeResource
     {
         $employee = $createEmployeeCommand->execute(
             EmployeeData::from(
@@ -40,7 +40,7 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Employee $employee)
+    public function show(Employee $employee): EmployeeResource
     {
         return EmployeeResource::make($employee);
     }
@@ -48,7 +48,7 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateEmployeeRequest $request, Employee $employee, UpdateEmployeeCommand $updateEmployeeCommand)
+    public function update(UpdateEmployeeRequest $request, Employee $employee, UpdateEmployeeCommand $updateEmployeeCommand): EmployeeResource
     {
         return EmployeeResource::make(
             $updateEmployeeCommand->execute(
@@ -66,7 +66,7 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employee $employee)
+    public function destroy(Employee $employee): EmployeeResource
     {
         //todo create deleteEmployeeCommand
 

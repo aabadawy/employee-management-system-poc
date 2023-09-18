@@ -22,6 +22,9 @@ class EmployeeResource extends JsonResource
             'mobile_number' => (int) $this->mobile_number,
             'salary_currency' => (string) $this->salary_currency,
             'net_salary' => (float) $this->net_salary,
+            'job' => JobResource::make($this->whenLoaded('job')),
+            'department' => DepartmenResource::make($this->whenLoaded('department')),
+            'deleted_at' => $this->whenNotNull($this->deleted_at?->format('Y-m-d- h:m')),
         ];
     }
 }

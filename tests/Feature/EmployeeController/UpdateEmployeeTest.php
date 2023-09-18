@@ -31,6 +31,8 @@ describe('updateEmployee', function () {
                     $json->where('name', 'updated name')
                         ->where('net_salary', 2000)
                         ->where('salary_currency', 'usd')
+                        ->has('department')
+                        ->has('job')
                         ->etc();
                 })
             );
