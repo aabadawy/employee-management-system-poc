@@ -22,7 +22,7 @@ class UpdateEmployeeRequest extends FormRequest
             'job_id'    => ['filled','integer',Rule::exists('jobs','id')],
             'department_id'    => ['filled','integer',Rule::exists('departments','id')],
             'mobile_country_code' => ['required_with:mobile_number',Rule::enum(SupportedCountryCode::class)],
-            'mobile_number'     => ['required_with:mobile_country_code','integer'],
+            'mobile_number'     => ['required_with:mobile_country_code','integer'],//todo validate mobile number with the country code
             'salary_currency'    => ['required_with:net_salary',Rule::enum(SalaryCurrency::class)],
             'net_salary' => ['required_with:salary_currency','numeric','min:1','max:1000000000'],
         ];
