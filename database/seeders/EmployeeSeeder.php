@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Employee;
+use App\Models\Job;
 use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder
@@ -12,6 +13,21 @@ class EmployeeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Employee::factory(100)
+            ->for(
+                Job::query()
+                    ->firstOr(
+                        fn() => Job::factory()->createOne(['title' => 'software engineer']
+                        )
+                    )
+            )->create();
+
+        Employee::factory(100)
+            ->for(
+                Job::query()
+                ->firstOr(
+                    fn() => Job::factory()->createOne(['title' => 'HR'])
+                )
+            )->create();
     }
 }

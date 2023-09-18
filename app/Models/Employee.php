@@ -25,4 +25,9 @@ class Employee extends Model
     {
         return $this->belongsTo(Job::class,'job_id');
     }
+
+    public function job(): BelongsTo
+    {
+        return $this->jobTitle();
+    }
 }
