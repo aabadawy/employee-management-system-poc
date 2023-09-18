@@ -12,6 +12,7 @@ class EmployeeData extends Data
         public string $name,
         public string $email,
         public int $job_id,
+        public int $department_id,
         public SupportedCountryCode $mobile_country_code,
         public int $mobile_number,
         public SalaryCurrency $salary_currency,

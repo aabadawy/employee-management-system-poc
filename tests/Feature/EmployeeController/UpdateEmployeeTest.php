@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Testing\Fluent\AssertableJson;
@@ -9,7 +10,9 @@ const UPDATE_EMPLOYEE_ENDPOINT = '/api/employees';
 describe('updateEmployee', function () {
     it('should update employees passed fields only', function () {
         Employee::factory()->for(
-            Job::factory()->createOne(),'jobTitle'
+            Job::factory()->createOne()
+        )->for(
+            Department::factory()->createOne()
         )->createOne([
             'name'  => 'foo ba',
             'net_salary' => 100,
@@ -39,7 +42,9 @@ describe('updateEmployee', function () {
     it('should return 422 status code when validation failed', function () {
 
         Employee::factory()->for(
-            Job::factory()->createOne(),'jobTitle'
+            Job::factory()->createOne()
+        )->for(
+            Department::factory()->createOne()
         )->createOne([
             'name'  => 'foo ba',
             'net_salary' => 100,

@@ -4,6 +4,7 @@ use App\Commands\Employee\CreateEmployeeCommand;
 use App\Data\EmployeeData;
 use App\Enums\Employee\SalaryCurrency;
 use App\Enums\Employee\SupportedCountryCode;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,6 +21,8 @@ it('should return created employee',function () {
 
     Job::factory()->createOne();
 
+    Department::factory()->createOne();
+
     $result = $createEmployeeCommand->execute(
         EmployeeData::from([
             'name'  => 'foo ba',
@@ -29,6 +32,7 @@ it('should return created employee',function () {
             'net_salary'    => 1200,
             'salary_currency'    => SalaryCurrency::Usd,
             'job_id'    => Job::query()->first()->getKey(),
+            'department_id'    => Department::query()->first()->getKey(),
         ])
     );
 

@@ -2,6 +2,7 @@
 
 use App\Commands\Employee\UpdateEmployeeCommand;
 use App\Data\EmployeeData;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Job;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -16,7 +17,9 @@ describe('updateEmployeeCommand', function () {
 
    it('should return employee instance after updated it', function () {
        $employeeBeforeUpdate = Employee::factory()->for(
-           Job::factory()->createOne(),'jobTitle'
+           Job::factory()->createOne()
+       )->for(
+           Department::factory()->createOne()
        )->createOne([
            'name'  => 'foo ba',
            'net_salary' => 100,
@@ -40,7 +43,9 @@ describe('updateEmployeeCommand', function () {
 
    it('should load employee jobTitle relation after update' ,function () {
        $employeeBeforeUpdate = Employee::factory()->for(
-           Job::factory()->createOne(),'jobTitle'
+           Job::factory()->createOne()
+       )->for(
+           Department::factory()->createOne()
        )->createOne([
            'name'  => 'foo ba',
            'net_salary' => 100,

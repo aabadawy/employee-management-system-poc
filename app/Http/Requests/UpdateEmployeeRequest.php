@@ -20,6 +20,7 @@ class UpdateEmployeeRequest extends FormRequest
             'name'  => ['filled','string','min:3','max:200'],
             'email' => ['filled','string','email','max:300'],
             'job_id'    => ['filled','integer',Rule::exists('jobs','id')],
+            'department_id'    => ['filled','integer',Rule::exists('departments','id')],
             'mobile_country_code' => ['required_with:mobile_number',Rule::enum(SupportedCountryCode::class)],
             'mobile_number'     => ['required_with:mobile_country_code','integer'],
             'salary_currency'    => ['required_with:net_salary',Rule::enum(SalaryCurrency::class)],

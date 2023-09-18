@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Job;
 use App\Models\User;
@@ -7,6 +8,7 @@ use Illuminate\Testing\Fluent\AssertableJson;
 
 beforeEach(function () {
     Job::factory(10)->create();
+    Department::factory(10)->create();
     User::factory()->create();
 });
 
@@ -14,6 +16,7 @@ $request_body = [
     'name'  => 'foo ba',
     'email' => 'foo@gmail.com',
     'job_id'    => 1,
+    'department_id'    => 1,
     'mobile_number'    => 11114470249,
     'mobile_country_code'  => '+20',
     'net_salary' => 1500,

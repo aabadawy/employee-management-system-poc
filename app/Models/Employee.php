@@ -17,6 +17,7 @@ class Employee extends Model
         'name',
         'email',
         'job_id',
+        'department_id',
         'mobile_country_code',
         'mobile_number',
         'salary_currency',
@@ -31,6 +32,11 @@ class Employee extends Model
     public function job(): BelongsTo
     {
         return $this->jobTitle();
+    }
+
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class,'department_id');
     }
 
     public function scopeSearch(Builder $query,string $segment):Builder

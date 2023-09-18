@@ -20,6 +20,7 @@ class StoreEmployeeRequest extends FormRequest
             'name'  => ['required','string','min:3','max:200'],
             'email' => ['required','string','email','max:300'],
             'job_id'    => ['required','integer',Rule::exists('jobs','id')],
+            'department_id'    => ['required','integer',Rule::exists('departments','id')],
             'mobile_country_code' => ['required',Rule::enum(SupportedCountryCode::class)],
             'mobile_number'     => ['required','integer'],
             'salary_currency'    => ['required',Rule::enum(SalaryCurrency::class)],
