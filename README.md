@@ -21,6 +21,7 @@
 
 
 ### used packages
-- [spatie query builder](https://spatie.be/docs/laravel-query-builder/v5/introduction) for map the query params with Eloquent Query Builder
-- [laravel pint](https://laravel.com/docs/10.x/pint) for support code style by default (laravel style)
+- [spatie DTO](https://spatie.be/docs/laravel-data/v3/introduction) for generating DTOs.
+- [spatie query builder](https://spatie.be/docs/laravel-query-builder/v5/introduction) for mapping the query params with Eloquent Query Builder
+- [laravel pint](https://laravel.com/docs/10.x/pint) for support code style by default (Laravel style)
 - [pest](https://pestphp.com/) for testing
